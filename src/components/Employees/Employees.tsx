@@ -19,10 +19,18 @@ interface EmployeesProps {
 export default function Employees(props: EmployeesProps) {
   const { employees } = props;
 
+  function getInitials(name: string) {
+    return name
+      .trim() // Remove extra spacing from ends
+      .split(/\s+/) // Split by any number of spaces
+      .map((word) => word[0].toUpperCase()) // Get first letter of each word
+      .join(""); // Combine them back together
+  }
+
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-xs border border-slate-100 overflow-hidden">
       <div className="p-6 border-b border-slate-100">
-        <h1 className="text-xl font-bold text-black">Employee App</h1>
+        <h1 className="text-xl font-bold text-black!">Employee App</h1>
       </div>
 
       <div className="px-5">
@@ -30,17 +38,15 @@ export default function Employees(props: EmployeesProps) {
           {employees.map((employee) => (
             <div
               key={employee.id}
-              className="p-4 bg-white rounded-lg border border-slate-200 shadow-xs flex flex-col justify-between"
+              className="p-4 bg-white rounded-lg border border-slate-200 text-black shadow-xs flex flex-col justify-between"
             >
-              <div></div>
+              <div className="py-5 border-2">{getInitials(employee.name)}</div>
               <div>
-                <h2 className="text-sm font-semibold text-slate-900">
+                <div className="text-sm font-bold text-black">
                   {employee.name}
-                </h2>
-                <p className="text-xs text-slate-600 mt-0.5">{employee.role}</p>
-                <p className="text-xs text-slate-400 mt-1">
-                  {employee.department}
-                </p>
+                </div>
+                <p className="text-xs mt-0.5">{employee.role}</p>
+                <p className="text-xs mt-1">{employee.department}</p>
               </div>
 
               <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
