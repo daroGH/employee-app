@@ -62,3 +62,12 @@ npm run build
 - **Frontend Framework:** React
 - **Build Tool:** Vite
 - **Styling Engine:** Tailwind CSS v4 (Native Vite Plugin)
+
+# Run out of time, Things I would aim to do
+
+- Search input (debug filteredData)
+- Filter input
+- Sort input
+- Embrace typescript before store the employee data useState
+- Add test component/hooks
+- Modal approach, use HeadlessUI to wrap in the modal
