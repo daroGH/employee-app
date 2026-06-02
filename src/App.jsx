@@ -1,4 +1,6 @@
 import './App.css'
+import { useState, useEffect } from 'react';
+import Employees from './components/Employees/Employees';
 
 function App() {
   const [employees, setEmployees] = useState([]);
@@ -22,10 +24,17 @@ function App() {
     fetchEmployees();
   }, []);
 
+  if (isLoading) {
+    return <div>Loading</div>
+  };
+
+  if (error)  {
+    return <div>Error: {error}</div>
+  };
 
   return (
     <div>
-      Hello
+      <Employees employees={employees}/>
     </div>
   )
 }
